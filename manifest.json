@@ -1,0 +1,61 @@
+{
+    "name": "Trace",
+    "description": "A Chrome extension for web analytics",
+    "version": "0.1",
+    "manifest_version": 3,
+    "minimum_chrome_version": "93",
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting",
+        "tabs",
+        "webRequest",
+        "declarativeNetRequest",
+        "debugger"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "/images/Trace16.png",
+            "32": "/images/Trace32.png",
+            "48": "/images/Trace48.png",
+            "128": "/images/Trace128.png"
+        }
+    },
+    "icons": {
+        "16": "/images/Trace16.png",
+        "32": "/images/Trace32.png",
+        "48": "/images/Trace48.png",
+        "128": "/images/Trace128.png"
+    },
+    "options_page": "options.html",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "run_at": "document_start",
+            "js": [
+                "contentScript.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "injectScript.js",
+                "traceImprint.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}

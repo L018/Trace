@@ -1,0 +1,172 @@
+<!-- 扩展选项页 -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="pico.min.css">
+        <link rel="stylesheet" href="options.css">
+        <script src="modal.js"></script>
+    </head>
+    <body class="main">
+        <a href="#" role="button" class="contrast"><strong>Trace</strong></a>
+        <div class="title"><h4>详细说明和设置</h4></div>
+        <div class="option">
+            <div class="head">
+                <details>
+                    <summary><strong>1. 追踪Cookie</strong> <mark>指定 Tag</mark></summary>
+                    <div>
+                        <span>在指定的 Tag 标签页中, 追踪响应头以及 JS 脚本对 Cookie 的获取或设置, 在控制台中打印对应请求 URL 或 JS 代码位置</span>
+                    </div>
+                </details>
+            </div>
+            <div class="body"></div>
+        </div>
+        <div class="option">
+            <div class="head">
+                <details>
+                    <summary><strong>2. 追踪事件</strong> <mark>全局</mark></summary>
+                    <div>
+                        <span>追踪<code>addEventListener</code>和<code>createEvent</code>函数</span>
+                    </div>
+                </details>
+            </div>
+            <div class="body"></div>
+        </div>
+        <div class="option">
+            <div class="head">
+                <details>
+                    <summary><strong>3. 追踪对象</strong> <mark>全局</mark></summary>
+                    <div>
+                        <span>追踪<code>createElement</code>函数, 并对生成的<code>video</code> <code>canvas</code> <code>iframe</code>元素对象进行再次追踪</span>
+                    </div>
+                </details>
+            </div>
+            <div class="body"></div>
+        </div>
+        <div class="option">
+            <div class="head">
+                <details>
+                    <summary><strong>4. 脚本注入</strong> <mark>全局</mark></summary>
+                    <div>
+                        <span>对所有文档, 在<code>document_start</code>时机时进行加载执行</span>
+                    </div>
+                </details>
+            </div>
+            <div class="body">
+                <textarea class="inject-code" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="option">
+            <div class="head">
+                <details>
+                    <summary><strong>5. 阻止请求</strong> <mark>全局</mark></summary>
+                    <div>
+                        <span>对所有正则匹配的请求进行拦截</span>
+                    </div>
+                </details>
+                <div>
+                    <svg class='block-add' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <mark>匹配地址包含 scheme://</mark>
+                </div>
+            </div>
+            <div id="blockItems" class="body">
+                <!-- <div class="block-item">
+                    <svg class='block-del' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    <input type="text" placeholder="ASCII RegExp"/>
+                    <kbd>get</kbd>
+                    <input type="checkbox" role="switch"/>
+                </div> -->
+            </div>
+        </div>
+        <div class="option">
+            <div class="head">
+                <details>
+                    <summary><strong>7. 变量追踪</strong> <mark>开启 Debugger</mark></summary>
+                    <div>
+                        <span>在指定的 Tag 标签页中, 对所有外联 Script 中可能涉及字符串的进行处理, 记录长度大于4的字符串及其首次产生位置</span>
+                        <br/>
+                        <br/>
+                        <span>可在控制台中使用追踪函数<code>t2SearchImprint('string')</code>进行查找</span>
+                    </div>
+                </details>
+            </div>
+            <div class="body"></div>
+        </div>
+        <div class="option">
+            <div class="head">
+                <details>
+                    <summary><strong>8. JS反混淆</strong> <mark>开启 Debugger</mark></summary>
+                    <div>
+                        <span>在指定的 Tag 标签页中, 对所有正则匹配的JS响应进行拦截修改</span>
+                        <br/>
+                        <br/>
+                        <span>通过拖拽进行添加 babel 插件, 添加顺序即为 transform 参数 options 属性 plugins 中数组顺序</span>
+                    </div>
+                </details>
+                <div>
+                    <svg class='deob-add' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <mark>匹配地址包含 scheme://</mark>
+                </div>
+                <div id="babelPlugins">
+                    <!-- <kbd data-name="插件名称" data-key="key" data-index="index" data-tooltip="插件描述插件描述asdf插件描述插件描述插件描述插件描述" draggable="true">插件名称</kbd> -->
+                </div>
+            </div>
+            <div  id="deobItems" class="body">
+                <!-- <div class="deob-item">
+                    <div>
+                        <svg class='deob-del' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        <input type="text" placeholder="RegExp"/>
+                        <input type="checkbox" role="switch"/>
+                    </div>
+                    <div class="plugins">
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="option">
+            <div class="head">
+                <details>
+                    <summary><strong>9. 响应流转</strong> <mark>开启 Debugger</mark></summary>
+                    <div>
+                        <span>在指定的 Tag 标签中, 对指定的 Doc Img Js Xhr 响应类型(或以上全部)的响应体, 二次转发到设置的地址中</span>
+                        <br/>
+                        <br/>
+                        <span>请求方法为 POST, 格式为JSON</span>
+                    </div>
+                </details>
+            </div>
+            <div id="respTransfer" class="body">
+                <select style="width: 15%">
+                    <option value="ALL" selected>ALL</option>
+                    <option value="DOC">DOC</option>
+                    <option value="IMG">IMG</option>
+                    <option value="JS">JS</option>
+                    <option value="XHR">XHR</option>
+                </select>
+                <input style="width: 84%" type="text" name="transferUrl" placeholder="地址 e.g. http://127.0.0.1:8000/response">
+            </div>
+        </div>
+        <div class="end">
+            <button class="save contrast" data-target="modal-msg">保 存</div>
+        </div>
+        <dialog id="modal-msg">
+            <article style="width: 500px;">
+              <a href="#close"
+                aria-label="Close"
+                class="close"
+                data-target="modal-msg">
+              </a>
+              <h3></h3>
+              <p></p>
+              <footer>
+                <a href="#confirm"
+                  role="button"
+                  data-target="modal-msg">
+                  确认
+                </a>
+              </footer>
+            </article>
+          </dialog>
+    </body>
+    <script src="options.js"></script>
+</html>
