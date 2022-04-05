@@ -18,12 +18,12 @@ Trace 可以用于帮助追踪网站的大部分行为，不限于 Cookie 的设
 
 ## Installation
 
-1. Chrome 应用商店安装 (等待审核完成)
+1. Chrome 应用商店安装 [Trace](https://chrome.google.com/webstore/detail/trace/cfpdmpepieedplgjphncpgiipkcjennh)
 2. 下载安装
 
-    下载文件 .crx 拖拽到 Chrome 中完成安装（等待审核完成）
+    下载文件 [main.crx](https://github.com/L018/Trace/releases/latest/download/main.crx) 拖拽到 Chrome 中完成安装
 3. 下载源码
-    1. 运行 minify.js 或下载 [Trace-dist.zip](https://github.com/L018/Trace/releases)
+    1. 运行 minify.js 或下载 [Trace-dist.zip](https://github.com/L018/Trace/releases/latest/download/Trace-dist.zip)
     2. 打开地址 chrome://extensions/, 开启 Developer mode 开关
     3. click `Load unpacked`, 选择 `Trace-dist` 加载
 
