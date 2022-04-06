@@ -12,7 +12,7 @@ let minifyOptions = {
     output: {
         path: path.resolve(__dirname, 'Trace-dist'),
     },
-    dirIgnore:["\\.git", "\\.vscode", "\\dev"],
+    dirIgnore:["\\.git", "\\.vscode", "\\dev", "\\readme-files"],
     ignore:[".md", ".pem", ".crx", ".gitignore", "minify.js", "babel.js"],
     skip: ['babel.min.js'],
     include: [".js"]

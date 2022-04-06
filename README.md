@@ -38,6 +38,10 @@ Trace 可以用于帮助追踪网站的大部分行为，不限于 Cookie 的设
 7. JS反混淆
 8. 响应流转
 
+<p align="center">
+    <img alt="Options" src="https://raw.githubusercontent.com/L018/Trace/main/readme-files/options.jpg" width="900">
+</p>
+
 ## Usage
 
 一如往常分析网站一样，打开 `Developer tools`, 检查 `Disable cache` 开关
